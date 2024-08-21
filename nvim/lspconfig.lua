@@ -9,7 +9,10 @@ local servers = {
   html = { "html", "javascriptreact", "typescriptreact" },
   cssls = { "css", "scss", "less" },
   tsserver = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-  tailwindcss = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact" }
+  tailwindcss = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  bashls = { "sh" },
+  dockerls = { "dockerfile" },
+  docker_compose_language_service = { "yaml.docker-compose" },
 }
 
 -- Set up language servers for each filetype
