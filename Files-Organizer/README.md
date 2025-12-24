@@ -48,8 +48,8 @@ To run the organizer automatically every 2 hours:
 1. Copy the systemd service and timer files:
 
 ```bash
-sudo cp systemd_services/files\ organisation/files-organizer.service /etc/systemd/system/
-sudo cp systemd_services/files\ organisation/files-organizer.timer /etc/systemd/system/
+sudo cp 'systemd_services/files organisation/files-organizer.service' /etc/systemd/system/
+sudo cp 'systemd_services/files organisation/files-organizer.timer' /etc/systemd/system/
 ```
 
 2. Enable and start the timer:

@@ -107,16 +107,20 @@ def organize_files():
         # Determine category
         category = get_file_category(file_extension)
         
-        # Create Others folder only if needed
-        if category == "Others" and file_extension:
-            category_path = DOWNLOADS_FOLDER / category
-            category_path.mkdir(exist_ok=True)
-        
         # Skip files without extensions (might be system files)
-        if not file_extension and category == "Others":
+        if not file_extension:
             logger.debug(f"Skipping file without extension: {item.name}")
             files_skipped += 1
             continue
+        
+        # Create Others folder only if needed
+        if category == "Others":
+            category_path = DOWNLOADS_FOLDER / category
+            try:
+                category_path.mkdir(exist_ok=True)
+                logger.info(f"Created folder: {category_path}")
+            except Exception as e:
+                logger.error(f"Error creating folder {category_path}: {e}")
         
         # Construct destination path
         destination_folder = DOWNLOADS_FOLDER / category
