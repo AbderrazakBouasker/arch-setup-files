@@ -1,0 +1,16 @@
+#~/.config/systemd/user/thunderbird.service
+#systemctl --user daemon-reload
+#systemctl --user enable thunderbird.service
+[Unit]
+Description=Start Thunderbird (Flatpak)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/flatpak run org.mozilla.Thunderbird
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+Restart=no
+
+[Install]
+WantedBy=graphical-session.target
