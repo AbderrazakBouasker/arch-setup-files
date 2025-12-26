@@ -3,14 +3,13 @@
 #systemctl --user enable thunderbird.service
 [Unit]
 Description=Start Thunderbird (Flatpak)
-After=graphical-session.target
-PartOf=graphical-session.target
+After=default.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/flatpak run org.mozilla.Thunderbird
-Environment=XDG_RUNTIME_DIR=/run/user/%U
+ExecStart=/bin/bash -c 'while [ ! -d "$XDG_RUNTIME_DIR" ]; do sleep 1; done; ex>
 Restart=no
+TimeoutStartSec=30
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target
